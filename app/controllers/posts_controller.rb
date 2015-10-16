@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :require_admin, only: [:new, :edit, :create, :update, :destroy]
+
   def index
     @posts = Post.all
   end
@@ -36,6 +38,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :text)
+    params.require(:post).permit(:title, :subtitle, :text)
   end
 end

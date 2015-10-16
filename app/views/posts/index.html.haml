@@ -4,7 +4,11 @@
     %h4.blog-title 
       Software Developer, Analyst and ardent problem solver
       Teacher and lifelong learner
+    - if current_user.admin
+      = link_to 'Add Post', new_post_path, class: 'btn'
+
     %input.blog-search{ "placeholder" => "React, Ruby on Rails, Vim"}
+
   %section
     %ol.mini-post-list
       - @posts.each do |post|
@@ -12,14 +16,14 @@
           %h3.mini-post-title
             = link_to post.title, post_path(post)
           %p.mini-post-content
-            = post.text
+            = post.subtitle
           %span.post-tag
             Vim
           %span.post-tag
             Ruby
           %span.post-tag
             Tmux
+          
+          - if current_user.admin
+            = link_to 'Edit', edit_post_path(post)
 
-          = link_to 'Edit', edit_post_path(post)
-
-    = link_to 'Add Post', new_post_path, class: 'btn btn-primary'
