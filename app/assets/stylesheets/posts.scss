@@ -1,0 +1,77 @@
+// Place all the styles related to the Posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.posts {
+  font-family: "calluna-sans", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
+}
+
+.logo {
+  max-width: 40%;
+}
+
+input.blog-search {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  min-width: 90%;
+  height: 45px;
+  color: #363842;
+  border: 1px solid rgba(199,201,211,0.96);
+  outline: none;
+  border-radius: 5px;
+  font-size: 1.6em;
+}
+
+input.blog-search:focus {
+  border: 1px solid #337ab7;
+}
+
+input.blog-search:hover {
+  border: 1px solid #70a2cd;
+}
+
+.blog-title {
+  margin-bottom: 2em;
+  line-height: 2.09em;
+  font-size: 1.5em;
+  max-width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.posts {
+  max-width: 50.5em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mini-post-list {
+  list-style-type: none;
+}
+
+.mini-post-title {
+  line-height: 2.09em;
+  font-size: 1.5em;
+  a {
+    color: #363842;
+    text-decoration: none;
+  }
+  a:hover {
+    color: #b81a1a; 
+  }
+
+}
+
+p.mini-post-content {
+  font-family: 'helvetica';
+  color: #5c5e6a;
+  line-height: 2.9em;
+  margin-bottom: 20px;
+}
+
+li.mini-post {
+  margin-bottom: 50px;
+  .post-tag {
+    color: #b81a1a;
+    text-transform: uppercase;
+  }
+}

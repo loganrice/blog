@@ -1,0 +1,25 @@
+%div.posts
+  %section.text-center
+    = image_tag 'logo.png', class: 'logo'
+    %h4.blog-title 
+      Software Developer, Analyst and ardent problem solver
+      Teacher and lifelong learner
+    %input.blog-search{ "placeholder" => "React, Ruby on Rails, Vim"}
+  %section
+    %ol.mini-post-list
+      - @posts.each do |post|
+        %li.mini-post
+          %h3.mini-post-title
+            = link_to post.title, post_path(post)
+          %p.mini-post-content
+            = post.text
+          %span.post-tag
+            Vim
+          %span.post-tag
+            Ruby
+          %span.post-tag
+            Tmux
+
+          = link_to 'Edit', edit_post_path(post)
+
+    = link_to 'Add Post', new_post_path, class: 'btn btn-primary'

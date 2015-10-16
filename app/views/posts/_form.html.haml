@@ -1,0 +1,4 @@
+= simple_form_for @post do |f|
+  = f.input :title
+  = f.input :text, :as => :text, :input_html => { :rows => 12 , :style => 'width: 100%'}
+  = f.submit
