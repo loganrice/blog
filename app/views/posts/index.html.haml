@@ -4,7 +4,7 @@
     %h4.blog-title 
       Software Developer, Analyst and ardent problem solver
       Teacher and lifelong learner
-    - if current_user.admin
+    - if current_user.try(:admin)
       = link_to 'Add Post', new_post_path, class: 'btn'
 
     %input.blog-search{ "placeholder" => "React, Ruby on Rails, Vim"}
@@ -24,6 +24,6 @@
           %span.post-tag
             Tmux
           
-          - if current_user.admin
+          - if current_user.try(:admin)
             = link_to 'Edit', edit_post_path(post)
 

@@ -10,41 +10,77 @@ describe PostsController do
   end
 
   describe "New" do
-    it "assigns a new instance of post" do
-      get :new
-      expect(assigns(:post)).to be_a Post
+    context "with admin user" do 
+      let(:admin) { FactoryGirl.create(:user, admin: true) } 
+
+      it "assigns a new instance of post" do
+        sign_in :user, admin
+        get :new
+        expect(assigns(:post)).to be_a Post
+      end
+    end
+    context "without an admin user" do
+      let(:admin) { FactoryGirl.create(:user, admin: false) } 
+
+      it "redirects to the root path" do 
+        sign_in :user, admin
+        get :new
+        expect(response).to redirect_to root_path
+      end
+
+      it "sets a flash notice" do 
+        sign_in :user, admin
+        get :new
+        expect(flash[:notice]).to  be_present
+      end
     end
   end
 
   describe "Create" do
-    it "creates a post" do
-      post :create, post: { title: "Awesome Blog", text: "Once upon a time..."}
-      expect(Post.first.title).to eq("Awesome Blog")
+    context "with admin user" do 
+      let(:admin) { FactoryGirl.create(:user, admin: true) } 
+
+      it "creates a post" do
+        sign_in :user, admin
+        post :create, post: { title: "Awesome Blog", text: "Once upon a time..."}
+        expect(Post.first.title).to eq("Awesome Blog")
+      end
     end
   end
 
   describe "Edit" do
-    it "assigns post" do
-      blog_post = FactoryGirl.create(:post)
-      get :edit, id: blog_post
-      expect(assigns(:post).id).to eq(blog_post.id)
+    context "with admin user" do 
+      let(:admin) { FactoryGirl.create(:user, admin: true) } 
+
+      it "assigns post" do
+        sign_in :user, admin
+        blog_post = FactoryGirl.create(:post)
+        get :edit, id: blog_post
+        expect(assigns(:post).id).to eq(blog_post.id)
+      end
     end
   end
 
   describe "Update" do
-    it "changes the title and text of a post" do
-      blog_post = FactoryGirl.create(:post)
-      post :update, id: blog_post.id, post: { title: 'First Post', text: 'Hello World' }
-      expect(Post.first.title).to eq('First Post')
-      expect(Post.first.text).to eq('Hello World')
-    end
+    context "with admin user" do 
+      let(:admin) { FactoryGirl.create(:user, admin: true) } 
 
-    it "redirects to the root path" do
-      blog_post = FactoryGirl.create(:post)
-      post :update, id: blog_post.id, post: { title: 'First Post', text: 'Hello World' }
-      expect(response).to redirect_to root_path
+      it "changes the title and text of a post" do
+        blog_post = FactoryGirl.create(:post)
+        sign_in :user, admin
+        post :update, id: blog_post.slug, post: { title: 'First Post', text: 'Hello World' }
+        expect(Post.first.title).to eq('First Post')
+        expect(Post.first.text).to eq('Hello World')
+      end
+
+      it "redirects to the root path" do
+        sign_in :user, admin
+        blog_post = FactoryGirl.create(:post)
+        blog_post = FactoryGirl.create(:post)
+        post :update, id: blog_post.slug, post: { title: 'First Post', text: 'Hello World' }
+        expect(response).to redirect_to root_path
+      end
     end
-     
   end
 end
 

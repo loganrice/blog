@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
     if current_user && current_user.admin
       true
     else
+      flash[:notice] = 'restricted to signed in users with approved access'
       redirect_to root_path
     end
   end
