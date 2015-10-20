@@ -2,7 +2,11 @@ class PostsController < ApplicationController
   before_action :require_admin, only: [:new, :edit, :create, :update, :destroy]
 
   def index
-    @posts = Post.all
+    if params[:tag]
+      @posts = Post.tagged_with(params[:tag])
+    else
+      @posts = Post.all
+    end
   end
 
   def new
@@ -38,6 +42,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :subtitle, :text)
+    params.require(:post).permit(:title, :subtitle, :text, :tag_list)
   end
 end

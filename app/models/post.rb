@@ -1,4 +1,5 @@
 class Post < ActiveRecord::Base
+  acts_as_taggable
   validates_presence_of :title
   after_validation :generate_slug
 

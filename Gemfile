@@ -10,6 +10,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'redcarpet', github: 'vmg/redcarpet'
 gem 'nokogiri'
 gem 'coderay'
+gem 'acts-as-taggable-on', '~> 3.4'
 
 group :development, :test do
   gem 'pry'

@@ -5,24 +5,23 @@
       Simplicity is the Result of Profound Reflection
     - if current_user.try(:admin)
       = link_to 'Add Post', new_post_path, class: 'btn'
-
-    %input.blog-search{ "placeholder" => "React, Ruby on Rails, Vim"}
+    %div#tag_cloud
+      - tag_cloud Post.tag_counts, %w[small medium large] do |tag, css_class|
+        = link_to tag.name, tag_path(tag.name), class: css_class
 
   %section
     %ol.mini-post-list
-      - @posts.each do |post|
-        %li.mini-post
-          %h3.mini-post-title
-            = link_to post.title, post_path(post)
-          %p.mini-post-content
-            = post.subtitle
-          %span.post-tag
-            Vim
-          %span.post-tag
-            Ruby
-          %span.post-tag
-            Tmux
-          
-          - if current_user.try(:admin)
-            = link_to 'Edit', edit_post_path(post)
+      - if @posts
+        - @posts.each do |post|
+          %li.mini-post
+            %h3.mini-post-title
+              = link_to post.title, post_path(post)
+            %p.mini-post-content
+              = post.subtitle
+              
+            - post.tag_list.map do |tag|
+              = link_to(tag, tag_path(tag))
+
+            - if current_user.try(:admin)
+              = link_to 'Edit', edit_post_path(post)
 

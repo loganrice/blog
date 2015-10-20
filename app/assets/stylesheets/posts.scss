@@ -3,30 +3,25 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .posts {
   font-family: "calluna-sans", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
+  a {
+    color: #b81a1a; 
+    text-decoration: none;
+  }
+  a:hover {
+    color: #363842;
+  }
+}
+
+#tag_cloud {
+  width: 400px;
+  line-height: 1.6em;
+  .small { font-size: 0.8em; }
+  .medium { font-size: 1.2em; }
+  .large { font-size: 1.8em; }
 }
 
 .logo {
   max-width: 40%;
-}
-
-input.blog-search {
-  margin-top: 2.0em;
-  margin-bottom: 2.0em;
-  min-width: 90%;
-  height: 45px;
-  color: #363842;
-  border: 1px solid rgba(199,201,211,0.96);
-  outline: none;
-  border-radius: 5px;
-  font-size: 1.6em;
-}
-
-input.blog-search:focus {
-  border: 1px solid #337ab7;
-}
-
-input.blog-search:hover {
-  border: 1px solid #70a2cd;
 }
 
 .blog-title {
