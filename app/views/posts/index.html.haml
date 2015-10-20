@@ -1,10 +1,11 @@
 %div.posts
   %section.text-center
     = image_tag 'logo.png', class: 'logo'
-    %h4.blog-title 
+    %h4#tag-line 
       Simplicity is the Result of Profound Reflection
     - if current_user.try(:admin)
       = link_to 'Add Post', new_post_path, class: 'btn'
+      = link_to 'Sign Out', destroy_user_session_path, method: :delete
     %div#tag_cloud
       - tag_cloud Post.tag_counts, %w[small medium large] do |tag, css_class|
         = link_to tag.name, tag_path(tag.name), class: css_class
@@ -20,7 +21,7 @@
               = post.subtitle
               
             - post.tag_list.map do |tag|
-              = link_to(tag, tag_path(tag))
+              = link_to(tag, tag_path(tag), class: 'post-tag')
 
             - if current_user.try(:admin)
               = link_to 'Edit', edit_post_path(post)

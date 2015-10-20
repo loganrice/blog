@@ -1,6 +1,7 @@
 // Place all the styles related to the Posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
 .posts {
   font-family: "calluna-sans", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
   a {
@@ -13,24 +14,36 @@
 }
 
 #tag_cloud {
-  width: 400px;
+  text-align: center;
   line-height: 1.6em;
+  margin-bottom: 2em;
+  text-transform: uppercase;
   .small { font-size: 0.8em; }
   .medium { font-size: 1.2em; }
   .large { font-size: 1.8em; }
 }
 
 .logo {
-  max-width: 40%;
+  max-width: 60%;
 }
 
-.blog-title {
-  margin-bottom: 2em;
+.logo-lr {
+  max-width: 8%;
+  position: absolute;
+  left: 50px;
+  top: 50px;
+}
+
+#tag-line {
+  margin-bottom: 4em;
   line-height: 2.09em;
   font-size: 1.5em;
   max-width: 70%;
   margin-left: auto;
   margin-right: auto;
+  font-family: georgia;
+  color: #5c5e6a;
+  font-style: italic;
 }
 
 .posts {
@@ -39,13 +52,16 @@
   margin-right: auto;
 }
 
+
 .mini-post-list {
   list-style-type: none;
+  margin-top: 60px;
 }
 
 .mini-post-title {
   line-height: 2.09em;
-  font-size: 1.5em;
+  font-size: 1.9em;
+  font-family: georgia;
   a {
     color: #363842;
     text-decoration: none;
@@ -59,8 +75,9 @@
 p.mini-post-content {
   font-family: 'helvetica';
   color: #5c5e6a;
-  line-height: 2.9em;
+  line-height: 1.5em;
   margin-bottom: 20px;
+  font-size: 1.2em;
 }
 
 li.mini-post {
@@ -69,4 +86,49 @@ li.mini-post {
     color: #b81a1a;
     text-transform: uppercase;
   }
+}
+
+.post-title {
+  text-align: center;
+}
+
+.post-sub-title {
+  text-align: center;
+  line-height: 2.09em;
+  font-size: 1.5em;
+  font-family: georgia;
+  color: #5c5e6a;
+  font-style: italic;
+ 
+}
+
+.post-tag {
+
+  font-family: "calluna-sans", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
+  color: #b81a1a; 
+  text-decoration: none;
+  text-transform: uppercase;
+  :hover {
+    color: #363842;
+    text-decoration: none;
+  } 
+}
+
+.post-container {
+  margin-top: 45px;
+  article {
+    padding-top: 8em;
+  }
+  .tag-list {
+
+    line-height: 5em;
+    margin-top: 15px;
+    text-align: center;
+  }
+}
+
+.post-content {
+  max-width: 780px;
+  margin-left: auto;
+  margin-right: auto;
 }

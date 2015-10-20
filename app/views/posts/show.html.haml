@@ -1,4 +1,13 @@
-%h1 @post.title
+%header
+  = link_to root_path do
+    = image_tag 'logo-lr.png', class: 'logo-lr img-responsive'
 
-%div
-  = markdown(@post.text)
+%section.container.post-container
+  %h1.post-title= @post.title
+  %h3.post-sub-title= @post.subtitle
+  %div.tag-list
+    - @post.tag_list.map do |tag|
+      = link_to(tag, tag_path(tag), class: 'post-tag')
+
+  %article.post-content
+    = markdown(@post.text)
