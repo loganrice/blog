@@ -29,9 +29,6 @@
 
 .logo-lr {
   max-width: 8%;
-  position: absolute;
-  left: 50px;
-  top: 50px;
 }
 
 #tag-line {
@@ -115,20 +112,17 @@ li.mini-post {
 }
 
 .post-container {
+  max-width: 780px;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 45px;
   article {
     padding-top: 8em;
   }
   .tag-list {
-
     line-height: 5em;
     margin-top: 15px;
     text-align: center;
   }
 }
 
-.post-content {
-  max-width: 780px;
-  margin-left: auto;
-  margin-right: auto;
-}
